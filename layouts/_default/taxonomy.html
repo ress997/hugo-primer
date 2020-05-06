@@ -1,15 +1,12 @@
 {{ define "title" }}
-{{ if not .IsHome }}{{ .Title }} &ndash; {{ end }}{{ .Site.Title }}
+{{ .Title }} &ndash; {{ .Site.Title }}
 {{ end }}
 
 
 {{ define "main" }}
 <!-- list template -->
 <div>
-	{{ if not .IsHome }}
-		<h1>{{ .Title }}</h1>
-	{{ end }}
-
+	<h1>{{ .Title }}</h1>
 	{{ .Content }}
 
 	{{ range .Paginator.Pages }}

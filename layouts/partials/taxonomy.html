@@ -1,13 +1,16 @@
-
 <!-- categories -->
-{{ with .Params.Categories }}{{ range . }}
-<a href='{{ "/categories/" | relLangURL }}{{ . | urlize }}' class="muted-link">
-  <span class="Label Label--gray-darker">{{ . }}</span>
-</a>
-{{ end }}{{ end }}
+{{ if .Params.Categories }}
+	{{ range (.GetTerms "categories") }}
+		<a href='{{ .Permalink }}' class="muted-link">
+			<span class="Label Label--gray">{{ .LinkTitle }}</span>
+		</a>
+	{{ end }}
+{{ end }}
 <!-- tags -->
-{{ with .Params.Tags }}{{ range . }}
-<a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}' class="muted-link">
-  <span class="Label Label--gray">{{ . }}</span>
-</a>
-{{ end }}{{ end }}
+{{ if .Params.Tags }}
+	{{ range (.GetTerms "tags") }}
+		<a href='{{ .Permalink }}' class="muted-link">
+			<span class="Label Label--gray">{{ .LinkTitle }}</span>
+		</a>
+	{{ end }}
+{{ end }}
